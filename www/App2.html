@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>YouTube Videos Downloader</title>
+</head>
+<body>
+    <div id="blur-domain"></div>
+    <div class="main" id="_">
+        <button id="menu-apps" onclick="toggle(this);">
+            <img src="icon/127_apps.png" alt="" draggable="false">
+            <span>Apps</span>
+        </button>
+        <div id="menu">
+            <header>
+                <img src="image/suara.jpg" alt="" draggable="false">
+            </header>
+            <div class="menu-list">
+                <a href="App2.html" class="menu-btn active">
+                    <img src="icon/127_nofill_youtube.png" alt="" draggable="false">
+                    <span>Videos</span>
+                </a>
+                <a href="App1.html" class="menu-btn">
+                    <img src="icon/127_nofill_image.png" alt="" draggable="false">
+                    <span>Thumbnails</span>
+                </a>
+                <a href="#" class="menu-btn">
+                    <img src="icon/127_nofill_python.png" alt="" draggable="false">
+                    <span>About</span>
+                </a>
+            </div>
+        </div>
+        <div id="menu-cover" class="hidden"></div>
+        <header></header>
+        <div class="form">
+            <h1>YouTube Videos Downloader</h1>
+            <div class="input">
+                <div class="btn">
+                    <img src="icon/127_urldownload.png" alt="" srcset="" draggable="false">
+                    <input type="button" id="btn_urldownload">
+                </div>
+                <input type="text" name="search" id="search" placeholder="Search ..." autocomplete="off" spellcheck="false" autofocus>
+                <div class="btn">
+                    <img src="icon/127_search.png" alt="" srcset="">
+                    <input type="button" id="btn_search" value="" onclick="searchVideos()">
+                </div>
+                <div class="btn">
+                    <img src="icon/127_folder.png" alt="" srcset="">
+                    <input type="button" id="btn_directory" value="" onclick="setDirectory()">
+                </div>
+            </div>
+        </div>
+        <div class="panel column" id="panel">
+            
+            <!-- <div class="pan-menu">
+                <div class="pan">
+                    <span class="progress-download"></span>
+                    <button class="number" id="btn_download" onclick="get();">
+                        (0) Download
+                    </button>
+                </div>
+            </div> -->
+
+            <div class="content">
+                <span class="index">1</span>
+                <div class="thumbnails">
+                    <img src="image/yana.jpg" id="video_img" alt="" draggable="false">
+                    <span class="duration">05:32</span>
+                </div>
+                <div class="information">
+                    <span class="title" id="video_title">【東方ボーカル】 「Desert years (Nhato remix)」 【ShibayanRecords】</span>
+                    <div class="row">
+                        <span class="block" id="video_id">
+                            <img src="icon/127_linking.png" alt="">
+                            eJB1SSXRxbQ
+                        </span>
+                        <span class="block" id="video_viewers">
+                            <img src="icon/127_eye.png" alt="">
+                            Views : 272,044
+                        </span>
+                    </div>
+                    <span class="channel" id="video_channel">Alice Margatroid</span>
+                    <span class="label">Available resolution:</span>
+                    <div class="row wrap" id="result" data-row-idx="1">
+                        <button class="res fetch" onclick="btn_please_wait()">
+                            <span class="top">FETCH</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content on-download">
+                <span class="index">1</span>
+                <div class="thumbnails">
+                    <img src="image/yana.jpg" id="video_img" alt="" draggable="false">
+                    <span class="duration">10:23</span>
+                </div>
+                <div class="information">
+                    <span class="title" id="video_title">【東方ボーカル】 「Desert years (Nhato remix)」 【ShibayanRecords】</span>
+                    <div class="row">
+                        <span class="block" id="video_id">
+                            <img src="icon/127_linking.png" alt="">
+                            eJB1SSXRxbQ
+                        </span>
+                        <span class="block" id="video_viewers">
+                            <img src="icon/127_eye.png" alt="">
+                            Views : 272,044
+                        </span>
+                    </div>
+                    <span class="channel" id="video_channel">Alice Margatroid</span>
+                    <span class="label">Availabel resolution:</span>
+                    <div class="row wrap" data-row-idx="2">
+                        <button class="res" onclick="btn_please_wait()">
+                            <div class="do-column">
+                                <div class="row">
+                                    <span class="top">480</span>
+                                    <span class="fps">60</span>
+                                </div>
+                                <span class="filesize">65.90Mb</span>
+                            </div>
+                        </button>
+                        <button class="res" onclick="btn_please_wait()">
+                            <div class="do-column">
+                                <div class="row">
+                                    <span class="top">720</span>
+                                    <span class="fps">60</span>
+                                </div>
+                                <span class="filesize">84.19Mb</span>
+                            </div>
+                        </button>
+                        <button class="res" onclick="btn_please_wait()">
+                            <div class="do-column">
+                                <div class="row">
+                                    <span class="top">1080</span>
+                                    <span class="fps">60</span>
+                                </div>
+                                <span class="filesize">103.05Mb</span>
+                            </div>
+                        </button>
+                        <button class="res" onclick="btn_please_wait()">
+                            <div class="do-column">
+                                <div class="row">
+                                    <span class="top">1440</span>
+                                    <span class="fps">60</span>
+                                </div>
+                                <span class="filesize">384.21Mb</span>
+                            </div>
+                        </button>
+                        <button class="res" onclick="btn_please_wait()">
+                            <div class="do-column">
+                                <div class="row">
+                                    <span class="top">2160</span>
+                                    <span class="fps">60</span>
+                                </div>
+                                <span class="filesize">731.38Mb</span>
+                            </div>
+                        </button>
+                        <button class="res" onclick="btn_please_wait()">
+                            <div class="do-column">
+                                <div class="row">
+                                    <span class="top">MP3</span>
+                                    <span class="fps">160</span>
+                                </div>
+                                <span class="filesize">14.91Mb</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="content">
+                <span class="index">1</span>
+                <img src="icon/thumb.jpg" alt="" draggable="false">
+                <div class="information">
+                    <span class="title">【東方ボーカル】 「Desert years (Nhato remix)」 【ShibayanRecords】</span>
+                    <div class="row">
+                        <span class="block">
+                            <img src="icon/127_linking.png" alt="">
+                            eJB1SSXRxbQ</span>
+                        <span class="block">
+                            <img src="icon/127_eye.png" alt="">
+                            Views : 272,044
+                        </span>
+                    </div>
+                    <span class="channel">Alice Margatroid</span>
+                    <span class="label">Available resolution:</span>
+                    <div class="row wrap">
+                        <button class="res">
+                            <span class="top">2160p</span>
+                        </button>
+                        <button class="res">
+                            <span class="top">1440p</span>
+                        </button>
+                        <button class="res">
+                            <span class="top">1080p</span>
+                        </button>
+                        <button class="res">
+                            <span class="top">720p</span>
+                        </button>
+                        <button class="res">
+                            <span class="top">480p</span>
+                        </button>
+                        <button class="res audio">
+                            <span class="top">160kbps</span>
+                        </button>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <a href="https://img.youtube.com/vi/lvZFaf9p-fo/maxresdefault.jpg" id="frame" download="https://img.youtube.com/vi/lvZFaf9p-fo/maxresdefault.jpg">asd</a> -->
+
+        </div>
+        <span class="pathbar" id="pathbar" onclick="openDir();">📁 Save path: </span>
+        <div class="video-player">
+            <!-- <div class="row">
+                <button class="close">close</button>
+            </div> -->
+            <iframe id="iframe_youtube" src="https://www.youtube.com/embed/Nq-YGrZpdsg?controls=0" frameborder="0" width="284" height="160" allowfullscreen></iframe>
+        </div>
+
+        <div class="download-domain">
+            <div class="modal">
+                <div class="cover">
+                    <img src="image/lina.jpg" id="thumbnails" alt="">
+                    <span class="duration">03:28</span>
+                </div>
+                <div class="group-modal">
+                    <span class="title">【男性が歌う】 夜に駆けるメドレー／YOASOBI</span>
+                    <div class="group-modal nested">
+                        <div class="row">
+                            <span class="info resolution">720p</span>
+                            <span class="info filesize">8.83Mb</span>
+                            <span class="info fps">30fps</span>
+                            <span class="info extension">.mp4</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group-modal high">
+                    <div class="row">
+                        <div class="do-col">
+                            <span class="groupname">Temp folder (auto-delete after complete):</span>
+                            <div class="row all-mid">
+                                <img src="icon/127_path.png" alt="" class="icon">
+                                <span class="infotext" id="path_temp">@path_to_temporary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group-modal medium">
+                    <div class="row">
+                        <div class="do-col">
+                            <span class="groupname">Save path folder:</span>
+                            <div class="row all-mid">
+                                <img src="icon/127_path.png" alt="" class="icon">
+                                <span class="infotext" id="path_save">@path_to_save_file</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group-modal">
+                    <div class="row">
+                        <div class="do-column">
+                            <span class="groupname">Status:</span>
+                            <div class="row all-mid">
+                                <img src="icon/127_globe.png" alt="" class="icon">
+                                <div class="do-column">
+                                    <span class="infotext mono" id="action_text_status">Ready</span>
+                                    <div class="progressbar">
+                                        <div class="fill" id="action_progress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action">
+                    <hr>
+                    <div class="row">
+                        <button class="btn" onclick="modal_close();">
+                            <span class="text">cancel</span>
+                        </button>
+                        <button class="btn btn-main" id="download_domain" onclick="modal_core_download();">
+                            <span class="text">download</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="behind disabled" id="__">
+        <span>Select your directory...</span>
+    </div>
+
+
+
+    <!-- SCRIPT -->
+    <script src="eel.js"></script>
+    <script>
+
+        function toggle(btn) {
+            panel = document.querySelector("#menu");
+            cover = document.querySelector("#menu-cover");
+            panel.classList.toggle("active");
+            cover.classList.toggle("hidden");
+        }
+
+        function panel_init() {
+            panel = document.querySelector("#menu");
+            panel_style = getComputedStyle(panel);
+            left = panel_style.getPropertyValue("width").replace("px", "");
+            panel.style.left = -Math.abs(left) + "px";
+        }
+
+        function number_with_comma(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function modal_close() {
+            var modal = document.querySelector(".modal");
+            var download_domain = document.querySelector(".download-domain");
+            if (modal != undefined & download_domain != undefined) {
+                modal.style.transform = "translate(-50%, -50%) scale(.65)";
+                modal.style.opacity = 0;
+                download_domain.style.opacity = 0;
+                setTimeout(function() {
+                    download_domain.style.display = "none";
+                }, 305)
+            }
+        }
+
+        panel_init();
+
+    </script>
+    <script>
+        /*callPython = function() {
+            eel.hello();
+        }*/
+        let index = 0
+        let _pathed = false
+
+        // preventing refresh caused pyeel
+        eel.refresh();
+
+        function listening() {
+            var search = document.querySelector("#search");
+            search.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    document.querySelector("#btn_search").click();
+                }
+            })
+        }
+        
+        listening();
+
+        function searchVideos() {
+            var textbox = document.querySelector("#search");
+            var title = textbox.value;
+            eel.search_videos(title);
+        }
+
+        eel.expose(search_get_first_item)
+        function search_get_first_item() {
+            var content = document.querySelectorAll(".content")[0]
+            var thumbnails = content.querySelector("#video_img");
+            var id = content.querySelector(".block");
+            if (content != undefined) {
+                background_dynamic(thumbnails.getAttribute("src"));
+                frame_youtube(id.innerText);
+            }
+        }
+
+        // function set directory in python
+        function setDirectory() {
+            eel.setDirectory()
+        }
+
+        eel.expose(is_pathed)
+        function is_pathed(path) {
+            _pathed = path
+        }
+
+        function get() {
+            makeObj("1", "yanagi", "yanagihara", "88191", "https://pm1.narvii.com/6439/97d3b7c9d8b66b049a6983ed8c9b1d7331c94de2_hq.jpg");
+        }
+
+        eel.expose(makeObj);
+        function makeObj(_id, _title, _channel, _viewer, _imgurl, _video_url, _duration) {
+            index = index + 1
+            
+            var panel = document.querySelector("#panel");
+            
+            var content = document.createElement("DIV");
+            content.setAttribute("class", "content");
+            
+            var span = document.createElement("span");
+            span.setAttribute("class", "index")
+            span.setAttribute("index-idx", index);
+            span.innerText = index;
+            panel.appendChild(content);
+            content.appendChild(span);
+
+            var thumbnails = document.createElement("DIV");
+            thumbnails.setAttribute("class", "thumbnails");
+            content.append(thumbnails);
+
+            var image = document.createElement("img");
+            image.setAttribute("id", "video_img");
+            image.setAttribute("src", _imgurl);
+            image.setAttribute("alt", "");
+            image.setAttribute("draggable", false);
+            thumbnails.appendChild(image);
+
+            var duration = document.createElement("span");
+            duration.setAttribute("class", "duration");
+            duration.innerText = _duration;
+            thumbnails.appendChild(duration);
+
+            var information = document.createElement("DIV");
+            information.setAttribute("class", "information");
+            information.setAttribute("id", _id);
+            content.appendChild(information);
+
+            var title = document.createElement("span");
+            title.innerText = _title;
+            title.setAttribute("class", "title");
+            title.setAttribute("title-idx", index);
+            title.addEventListener("click", function() {
+                console.log(_id);
+                frame_youtube(_id);
+                background_dynamic(_imgurl);
+                ui_change_status(title.getAttribute("title-idx"));
+            })
+            information.appendChild(title);
+
+            var row_block = document.createElement("DIV");
+            row_block.setAttribute("class", "row");
+            information.appendChild(row_block);
+
+
+            var span_video_id = document.createElement("span");
+            span_video_id.setAttribute("class", "block");
+            var span_video_id_icon = document.createElement("img");
+            span_video_id_icon.setAttribute("src", "icon/127_linking.png")
+            span_video_id_icon.setAttribute("alt", "");
+            span_video_id_icon.setAttribute("draggable", false);
+            
+            row_block.appendChild(span_video_id);
+            span_video_id.appendChild(span_video_id_icon);
+            span_video_id.innerHTML += _id;
+
+            var span_video_viewer = document.createElement("span");
+            span_video_viewer.setAttribute("class", "block");
+            var span_video_viewer_icon = document.createElement("img");
+            span_video_viewer_icon.setAttribute("src", "icon/127_eye.png");
+            span_video_viewer_icon.setAttribute("alt", "");
+            span_video_viewer_icon.setAttribute("draggable", false);
+            
+            row_block.appendChild(span_video_viewer);
+            span_video_viewer.appendChild(span_video_viewer_icon);
+            span_video_viewer.innerHTML += "Views : " + number_with_comma(_viewer);
+
+            var channel = document.createElement("span");
+            channel.setAttribute("class", "channel");
+            channel.innerText = _channel;
+            information.appendChild(channel);
+
+            var label = document.createElement("span");
+            label.setAttribute("class", "label");
+            label.innerText = "Available resolution:";
+            information.appendChild(label);
+
+            var row_wrap = document.createElement("DIV");
+            row_wrap.setAttribute("class", "row wrap");
+            row_wrap.setAttribute("data-row-idx", index);
+            information.append(row_wrap);
+
+            var btn_fetch = document.createElement("button");
+            btn_fetch.setAttribute("class", "res fetch");
+            btn_fetch.addEventListener("click", function(e) {
+                // eel.Video(_video_url, row_wrap.getAttribute("data-row-idx"));
+                btn_please_wait(row_wrap.getAttribute("data-row-idx"))
+                disable_res_button();
+                eel.init_video(_video_url, row_wrap.getAttribute("data-row-idx"));
+            })
+            row_wrap.appendChild(btn_fetch);
+            
+            var span_top = document.createElement("span");
+            span_top.setAttribute("class", "top");
+            span_top.innerText = "FETCH";
+            btn_fetch.appendChild(span_top);
+        }
+
+        eel.expose(object_resolution);
+        function object_resolution(parent_idx, resolution, frame, itag, data_filesize) {
+            itag = itag;
+            var parent = document.querySelectorAll('[data-row-idx]')[parent_idx-1]
+            var res = document.createElement("button");
+            if (resolution == "ogg") {
+                res.setAttribute("class", "res music");
+            } else {
+                res.setAttribute("class", "res");
+            }
+            res.setAttribute("data-resolution", resolution.replace("p", ""))
+            res.style.transform = "scale(0)";
+            parent.appendChild(res); // <- check here!
+
+            let information = res.parentNode.parentNode;
+            res.addEventListener("click", function(e) {
+                console.log(itag);
+                eel.init_check(parent_idx, res.getAttribute("data-resolution"), information.getAttribute("id"));
+            })
+
+            var do_column = document.createElement("DIV");
+            do_column.setAttribute("class", "do-column");
+            res.appendChild(do_column);
+
+            var row = document.createElement("DIV");
+            row.setAttribute("class", "row");
+            do_column.appendChild(row);
+            
+            setTimeout(function() {
+                res.style.transform = "scale(1)";
+            }, 222);
+            var top = document.createElement("span");
+            var fps = document.createElement("span");
+            top.setAttribute("class", "top");
+            fps.setAttribute("class", "fps");
+            top.innerText = resolution;
+            fps.innerText = frame;
+            row.appendChild(top);
+            row.appendChild(fps);
+
+            var filesize = document.createElement("SPAN");
+            filesize.setAttribute("class", "filesize")
+            filesize.innerText = data_filesize + "Mb";
+            do_column.appendChild(filesize);
+        }
+
+        eel.expose(get_download_info);
+        function get_download_info(data_rowidx, data_imgurl, data_title, data_resolution, data_duration, data_fps, data_filesize, data_extension, data_pathtemp, data_pathsave) {
+            var info_resolution = document.querySelectorAll(".info.resolution")[0];
+            var info_fps = document.querySelectorAll(".info.fps")[0];
+            var info_filesize = document.querySelectorAll(".info.filesize")[0];
+            var info_extension = document.querySelectorAll(".info.extension")[0];
+
+            var path_temp = document.querySelector("#path_temp");
+            var path_save = document.querySelector("#path_save");
+
+            var modal = document.querySelector(".modal");
+            modal.setAttribute("modal-row-idx", data_rowidx);
+            var download_domain = document.querySelector(".download-domain");
+
+            if (info_resolution != undefined & info_fps != undefined & info_filesize != undefined & info_extension != undefined & path_temp != undefined & path_save != undefined) {
+                info_resolution.innerText = data_resolution;
+                info_resolution.setAttribute("data-info-resolution", data_resolution);
+                info_fps.innerText = data_fps;
+                info_filesize.innerText = data_filesize + "Mb";
+                info_extension.innerText = data_extension;
+
+                var btn_download = download_domain.querySelector("#download_domain");
+
+                var cover = download_domain.querySelector("#thumbnails");
+                var duration = download_domain.querySelector(".duration");
+                var title = download_domain.querySelectorAll(".title")[0];
+                cover.setAttribute("src", data_imgurl);
+                duration.innerText = data_duration;
+                title.innerText = data_title;
+
+                if (data_resolution == "null") {
+                    info_resolution.style.display = "none";
+                    btn_download.classList.remove("btn-main");
+                    btn_download.classList.add("btn-music");
+                } else {
+                    info_resolution.style.display = "block";
+                    btn_download.classList.remove("btn-music");
+                    btn_download.classList.add("btn-main");
+                }
+
+                path_temp.innerText = data_pathtemp;
+                path_save.innerText = data_pathsave;
+            }
+
+            if (modal != undefined & download_domain != undefined) {
+                download_domain.style.display = "block";
+                modal.style.display = "block";
+                setTimeout(function() {
+                    download_domain.style.opacity = 1;
+                    modal.style.transform = "translate(-50%, -50%) scale(1)";
+                    modal.style.opacity = 1;
+                }, 105)
+            }
+        }
+
+        function disable_res_button() {
+            var res = document.querySelectorAll("[data-resolution]");
+            if (res != undefined) {
+                for (i = 0; i < res.length; i ++) {
+                    // res[i].setAttribute("class", `${res[i].getAttribute("class")} res-disable`);
+                    // res[i].classList.toggle("res-disable");
+                    res[i].classList.add("res-disable");
+                    res[i].setAttribute("disabled", true);
+                }
+            }
+        }
+
+        eel.expose(enable_res_button)
+        function enable_res_button() {
+            var res = document.querySelectorAll("[data-resolution]");
+            if (res != undefined) {
+                for (i = 0; i < res.length; i ++) {
+                    // res[i].classList.toggle("res-disable");
+                    res[i].classList.remove("res-disable");
+                    res[i].removeAttribute("disabled");
+                }
+            }
+        }
+
+        eel.expose(clearObj);
+        function clearObj() {
+            index = 0 // -1
+            var panel = document.querySelector("#panel");
+            panel.textContent = "";
+            //getSelectedIndex();
+        }
+
+        function btn_please_wait(parent_idx) {
+            var parent = document.querySelectorAll('[data-row-idx]')[parent_idx-1]
+            var btn_fetch = parent.querySelector(".res.fetch")
+            var top = btn_fetch.getElementsByTagName('SPAN')[0]
+            if (btn_fetch != undefined & top != undefined) {
+                btn_fetch.setAttribute("disabled", true)
+                btn_fetch.setAttribute("class", "fetch res loading")
+                top.innerText = "Please wait..."
+            }
+        }
+
+        eel.expose(btn_finish_fetch)
+        function btn_finish_fetch(parent_idx) {
+            var parent = document.querySelectorAll('[data-row-idx]')[parent_idx-1]
+            var btn_fetch = parent.querySelector('.res.fetch')
+            if (btn_fetch != undefined) {
+                btn_fetch.style.display = "none";
+            }
+        }
+
+        function frame_youtube(id) {
+            var iframe = document.querySelector("#iframe_youtube");
+            if (iframe != undefined) {
+                iframe.setAttribute("src", `https://www.youtube.com/embed/${id}?controls=0&rel=0`);
+            }
+        }
+
+        function ui_change_status(row_idx) {
+            var content = document.querySelectorAll(".content")[row_idx-1];
+            var index = content.querySelector(".index");
+            var indexs = document.querySelectorAll("[status-preview=true]");
+
+            for (i = 0; i < indexs.length; i++) {
+                indexs[i].setAttribute("status-preview", false);
+                indexs[i].innerText = indexs[i].getAttribute("index-idx");
+            }
+
+            if (content != undefined) {
+                index.innerText = "On preview";
+                index.setAttribute("status-preview", true);
+            }
+        }
+
+        function background_dynamic(imageurl) {
+            var body = document.getElementsByTagName("BODY")[0];
+            var blur = document.getElementById("blur-domain");
+            if (body != undefined & blur != undefined) {
+                body.style.backgroundImage = `url("${imageurl}")`;
+                blur.style.backgroundImage = `url("${imageurl}")`;
+            }
+        }
+
+        function getUrl(url) {
+            console.log(url)
+        }
+
+        function sendList() {
+            list = getSelectedIndex();
+            eel.core_downloadThumbnails(list);
+            //eel.getUrlFromIndex(list);
+            //eel.createTk();
+        }
+
+        eel.expose(modal_update_status)
+        function modal_update_status(text) {
+            var download_domain = document.querySelector(".download-domain");
+            var modal = download_domain.querySelector(".modal");
+
+            if (download_domain != undefined & modal != undefined) {
+                var text_status = modal.querySelector("#action_text_status");
+                text_status.innerText = text;
+            }
+        }
+
+        eel.expose(modal_update_progress)
+        function modal_update_progress(value) {
+            var download_domain = document.querySelector(".download-domain");
+            var modal = download_domain.querySelector(".modal");
+            var progress = modal.querySelector("#action_progress");
+
+            if (download_domain != undefined & modal != undefined & progress != undefined) {
+                progress.style.width = `${value}%`;
+                // console.log(value);
+            }
+        }
+
+        // for download process
+        eel.expose(modal_animation_download)
+        function modal_animation_download() {
+            var download_domain = document.querySelector(".download-domain");
+            var modal = download_domain.querySelector(".modal");
+
+            if (download_domain != undefined) {
+                var progress = modal.querySelector("#action_progress");
+
+                progress.classList.remove("ready");
+                progress.classList.remove("merging");
+                progress.classList.remove("loading");
+            }
+        }
+
+        // for merging process
+        eel.expose(modal_animation_merging)
+        function modal_animation_merging() {
+            var download_domain = document.querySelector(".download-domain");
+            var modal = download_domain.querySelector(".modal");
+
+            if (download_domain != undefined) {
+                var progress = modal.querySelector("#action_progress");
+
+                progress.classList.remove("ready");
+                progress.classList.add("merging");
+                progress.classList.remove("loading");
+            }
+        }
+
+        // for cleaning file(s) temporary
+        eel.expose(modal_animation_loading)
+        function modal_animation_loading() {
+            var download_domain = document.querySelector(".download-domain");
+            var modal = download_domain.querySelector(".modal");
+
+            if (download_domain != undefined) {
+                var progress = modal.querySelector("#action_progress");
+
+                progress.classList.remove("ready");
+                progress.classList.remove("merging");
+                progress.classList.add("loading");
+            }
+        }
+
+        // for ready after
+        eel.expose(modal_animation_ready)
+        function modal_animation_ready() {
+            var download_domain = document.querySelector(".download-domain");
+            var modal = download_domain.querySelector(".modal");
+
+            if (download_domain != undefined) {
+                var progress = modal.querySelector("#action_progress");
+
+                progress.classList.add("ready");
+                progress.classList.remove("merging");
+                progress.classList.remove("loading");
+            }
+        }
+
+        function modal_core_download() {
+            var download_domain = document.querySelector(".download-domain");
+            var modal = download_domain.querySelector(".modal");
+            var info_resolution = modal.querySelector(".info.resolution");
+
+            if (download_domain != undefined & info_resolution != undefined) {
+                row_idx = modal.getAttribute("modal-row-idx");
+                res = info_resolution.getAttribute("data-info-resolution").replace("p", "");
+                eel.modal_core_download(row_idx, res);
+            }
+        }
+
+        eel.expose(btnDownload)
+        function btnDownload(status) {
+            var btn_download = document.querySelector("#btn_download");
+            if (status === true) {
+                btn_download.innerHTML = "Downloading...";
+                btn_download.classList.add("disabled");
+                btn_download.disabled = true
+            } else {
+                btn_download.classList.remove("disabled");
+                btn_download.disabled = false
+            }
+        }
+
+        eel.expose(download)
+        function download(url) {
+            var index = getSelectedIndex();
+            var frame = document.querySelector("#frame");
+            index.forEach(function(i) {
+                // console.log(i);
+                frame.src = url;
+            })
+        }
+
+        eel.expose(dialogSwap)
+        function dialogSwap(status, path) {
+            var body = document.getElementById("_");
+            var behind = document.getElementById("__");
+            var pathbar = document.querySelector("#pathbar");
+            if (status === true) {
+                body.classList.add("disabled");
+                behind.classList.remove("disabled");
+                pathbar.innerHTML = `📁 Save path: ${path}`
+                is_pathed();
+            } else {
+                body.classList.remove("disabled");
+                behind.classList.add("disabled");
+                pathbar.innerHTML = `📁 Save path: ${path}`
+                is_pathed();
+            }
+        }
+
+        eel.expose(progressbar)
+        function progressbar() {
+            var download = document.querySelector(".progress-download");
+            download.style.width = "0px";
+            download.style.opacity = 0;
+            download.style.backgroundColor = "rgb(255, 255, 255, 0.22)"
+        }
+
+        eel.expose(updateProgressbar)
+        function updateProgressbar(amountDownload) {
+            var download = document.querySelector("#btn_download");
+            var download_style = getComputedStyle(download);
+            var progressbar = document.querySelector(".progress-download");
+            var progressbar_style = getComputedStyle(progressbar);
+            
+            var maxwidth = parseFloat(download_style.getPropertyValue("width").replace("px", ""));
+            var curwidth = parseFloat(progressbar_style.getPropertyValue("width").replace("px", ""));
+            var setwidth = parseFloat(maxwidth / amountDownload);
+            progressbar.style.backgroundColor = "rgb(0, 0, 0, 0.22)"
+            progressbar.style.opacity = 1;
+            progressbar.style.width = curwidth + setwidth + "px";
+        }
+
+        eel.expose(clearChecked)
+        function clearChecked() {
+            var checkedList = document.querySelectorAll("input[name='img']:checked");
+            checkedList.forEach(function(e) {
+                e.checked = false;
+            })
+            getSelectedIndex();
+        }
+
+        function openDir() {
+            eel.openDir();
+        }
+    </script>
+</body>
+</html>
